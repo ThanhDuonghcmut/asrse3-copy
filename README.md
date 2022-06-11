@@ -61,7 +61,7 @@ python fill_buffer_deconstruct.py --num_process=20 --alg=margin_asr --action_seq
 
 Data of each goal will be stored in a seperate folder, sub folder of `log_sub` , the name of the folder is the goal.
 
-**The data of each goal must be collect one time. If you want to collect data of that goal again, you have to delete the data folder in the {log_sub} folder first.**
+**The data of each goal must be collect one time. If you want to collect data of that goal again, you have to delete the data folder in the `log_sub` folder first.**
 
 ### Training
 
