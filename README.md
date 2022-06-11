@@ -42,9 +42,9 @@ Parameter explanation:
 - num_process: Number of process to run parallel
 - alg: type of algorithm to choose:
 
-* alg=margin_asr: ASRSE3 algorithm
-* alg=dqn_fcn: Normal DQN
-* alg=margin_fcn, margin=oril: DQfD
+  - alg=margin_asr: ASRSE3 algorithm
+  - alg=dqn_fcn: Normal DQN
+  - alg=margin_fcn, margin=oril: DQfD
 
 - action_sequence: type of action sequence that is using
 - buffer_size: the max size of the buffer, or the amount of data to collect
