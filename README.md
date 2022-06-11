@@ -33,60 +33,69 @@ This is a copy of asrse3 github repo of Dian Wang. Original project website: htt
 
 Because the house_building_x_need to specify the goal, so for every goal we will collect into a folder.
 
+#### Example training goal=1l1b1r with algorithm ASRSE3
+
 ```
-python fill_buffer_deconstruct.py --num_process=20 --alg=margin_asr --action_sequence=xyrp --buffer_size=50000 --env=house_building_x_deconstruct --max_episode_steps=10 --log_sub=hx_deconstruct --goal=1b1r
+python fill_buffer_deconstruct.py --num_process=20 --alg=margin_asr --action_sequence=xyrp --buffer_size=50000 --env=house_building_x_deconstruct --max_episode_steps=10 --log_sub=hx_deconstruct --goal=1l1b1r
 ```
 
-Parameter explanation:
+#### Running instruction:
 
-- num_process: Number of process to run parallel
-- alg: type of algorithm to choose:
+- For different goals, we replace `--goal=1l1b1r` with the goal we want.
+- For different algorithms, we replace `--alg=margin_asr` with the algorithm we want below
 
-  - alg=margin_asr: ASRSE3 algorithm
-  - alg=dqn_fcn: Normal DQN
-  - alg=margin_fcn, margin=oril: DQfD
+#### Parameter explanation:
 
-- action_sequence: type of action sequence that is using
-- buffer_size: the max size of the buffer, or the amount of data to collect
-- env: the environment we want to run, here we choose the "house_building_x_deconstruct"
-- log_sub: the folder contains all the data folders collected. It is the sub folder of /scripts/output/{alg}\_deconstruct/
-- goal: the goal we want to achieve
+- `num_process`: Number of process to run parallel
+- `alg`: type of algorithm to choose:
 
-Data of each goal will be stored in a seperate folder, sub folder of log_sub , the name of the folder is the goal.
+  - `--alg=margin_asr`: ASRSE3 SDQfD algorithm
+  - `--alg=dqn_fcn`: Normal DQN
+  - `alg=margin_fcn margin=oril`: DQfD
+
+- `action_sequence`: type of action sequence that is using
+- `buffer_size`: the max size of the buffer, or the amount of data to collect
+- `env`: the environment we want to run, here we choose the `house_building_x_deconstruct`
+- `log_sub`: the folder contains all the data folders collected. It is the sub folder of `/scripts/output/{alg}\_deconstruct/`
+- `goal`: the goal we want to achieve
+
+Data of each goal will be stored in a seperate folder, sub folder of `log_sub` , the name of the folder is the goal.
+
+**The data of each goal must be collect one time. If you want to collect data of that goal again, you have to delete the data folder in the {log_sub} folder first.**
 
 ### Training
 
-#### Example: training 5H1 using ASRSE3 SDQfD
+#### Example: training goal=1l1b1r using ASRSE3 SDQfD
 
 ```
-python main.py --num_process=5 --alg=margin_asr --action_sequence=xyrp --planner_episode=0 --explore=0 --fixed_eps --buffer=expert --max_episode=50000 --pre_train_step=10000 --env=house_building_1 --num_objects=5 --max_episode_steps=10 --load_buffer=outputs/margin_asr_deconstruct/h1_deconstruct/checkpoint/buffer.pt
+python main.py --num_process=5 --alg=margin_asr --action_sequence=xyrp --explore=0 --fixed_eps --buffer=expert --max_episode=50000 --pre_train_step=10000 --env=house_building_x --max_episode_steps=10 --goal=1l1b1r
 ```
 
-#### Other envs:
+#### Running instruction:
 
-Replace the following parameters for `main.py`:
-`--env=house_building_1 --num_objects=5 --max_episode_steps=10 --load_buffer=outputs/margin_asr_deconstruct/h1_deconstruct/checkpoint/buffer.pt`
-with:
+- For different goals, we replace `--goal=1l1b1r` with the goal we want.
+- For different algorithms, we replace `--alg=margin_asr` with the algorithm we want below
 
-- H4: `--env=house_building_4 --num_objects=6 --max_episode_steps=20 --load_buffer=outputs/margin_asr_deconstruct/h4_deconstruct/checkpoint/buffer.pt`
-- ImDis: `--env=improvise_house_building_discrete --num_objects=5 --max_episode_steps=10 --load_buffer=outputs/margin_asr_deconstruct/imdis_deconstruct/checkpoint/buffer.pt`
-- ImRan: `--env=improvise_house_building_random --num_objects=5 --max_episode_steps=10 --load_buffer=outputs/margin_asr_deconstruct/imran_deconstruct/checkpoint/buffer.pt`
+#### Parameter explanation:
 
-#### Other algorithms
+- `num_process`: Number of process to run parallel
+- `alg`: type of algorithm to choose:
 
-Replace `--alg=margin_asr` in `main.py` with:
+  - `--alg=margin_asr`: ASRSE3 SDQfD algorithm
+  - `--alg=dqn_fcn`: Normal DQN
+  - `alg=margin_fcn margin=oril`: DQfD
 
-- ASRSE3 DQfD: `--alg=margin_asr --margin=oril`
-- ASRSE3 ADET: `--alg=margin_asr --margin=ce`
-- ASRSE3 DQN: `--alg=dqn_asr`
-- FCN SDQfD: `--alg=margin_fcn`
-- FCN DQfD: `--alg=margin_fcn --margin=oril`
-- FCN ADET: `--alg=margin_fcn --margin=ce --margin_weight=0.01`
-- FCN DQN: `--alg=dqn_fcn`
+- `action_sequence`: type of action sequence that is using
+- `explore` and `fix_eps`: these parameters are used for exploration
+- `buffer`: type of buffer using, we have 2 types: `expert` and `normal`
+- `max_episode`: the number of episodes for trainging process
+- `pre_train_step`: the number of step for pretraining. When using `--alg=dqn_fcn`, we don't need this parameter
+- `env`: the environment we want to run, here we choose the `house_building_x`
+- `goal`: the goal we want to achieve
 
 ## Results
 
-The training results will be saved under `scripts/outputs`
+The training results will be saved under `scripts/outputs/{alg}/`
 
 ## Citation
 
