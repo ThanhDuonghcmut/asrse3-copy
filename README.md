@@ -34,8 +34,25 @@ This is a copy of asrse3 github repo of Dian Wang. Original project website: htt
 Because the house_building_x_need to specify the goal, so for every goal we will collect into a folder.
 
 ```
-python fill_buffer_deconstruct.py --num_process=20 --alg=margin_asr --action_sequence=xyrp --buffer_size=50000 --env=house_building_1_deconstruct --num_objects=5 --max_episode_steps=10 --log_sub=h1_deconstruct
+python fill_buffer_deconstruct.py --num_process=20 --alg=margin_asr --action_sequence=xyrp --buffer_size=50000 --env=house_building_x_deconstruct --max_episode_steps=10 --log_sub=hx_deconstruct --goal=1b1r
 ```
+
+Parameter explanation:
+
+- num_process: Number of process to run parallel
+- alg: type of algorithm to choose:
+
+* alg=margin_asr: ASRSE3 algorithm
+* alg=dqn_fcn: Normal DQN
+* alg=margin_fcn, margin=oril: DQfD
+
+- action_sequence: type of action sequence that is using
+- buffer_size: the max size of the buffer, or the amount of data to collect
+- env: the environment we want to run, here we choose the "house_building_x_deconstruct"
+- log_sub: the folder contains all the data folders collected. It is the sub folder of /scripts/output/{alg}\_deconstruct/
+- goal: the goal we want to achieve
+
+Data of each goal will be stored in a seperate folder, sub folder of log_sub , the name of the folder is the goal.
 
 ### Training
 
