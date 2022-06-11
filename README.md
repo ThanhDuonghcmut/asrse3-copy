@@ -51,12 +51,12 @@ python fill_buffer_deconstruct.py --num_process=20 --alg=margin_asr --action_seq
 
   - `--alg=margin_asr`: ASRSE3 SDQfD algorithm
   - `--alg=dqn_fcn`: Normal DQN
-  - `alg=margin_fcn margin=oril`: DQfD
+  - `--alg=margin_fcn --margin=oril`: DQfD
 
 - `action_sequence`: type of action sequence that is using
 - `buffer_size`: the max size of the buffer, or the amount of data to collect
 - `env`: the environment we want to run, here we choose the `house_building_x_deconstruct`
-- `log_sub`: the folder contains all the data folders collected. It is the sub folder of `/scripts/output/{alg}\_deconstruct/`
+- `log_sub`: the folder contains all the data folders collected. It is the sub folder of `/scripts/output/{alg}_deconstruct/`
 - `goal`: the goal we want to achieve
 
 Data of each goal will be stored in a seperate folder, sub folder of `log_sub` , the name of the folder is the goal.
@@ -83,7 +83,7 @@ python main.py --num_process=5 --alg=margin_asr --action_sequence=xyrp --explore
 
   - `--alg=margin_asr`: ASRSE3 SDQfD algorithm
   - `--alg=dqn_fcn`: Normal DQN
-  - `alg=margin_fcn margin=oril`: DQfD
+  - `--alg=margin_fcn --margin=oril`: DQfD
 
 - `action_sequence`: type of action sequence that is using
 - `explore` and `fix_eps`: these parameters are used for exploration
