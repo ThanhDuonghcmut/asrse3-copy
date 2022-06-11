@@ -4,25 +4,20 @@ This is a copy of asrse3 github repo of Dian Wang. Original project website: htt
 
 ## Installation
 
-1. Install [anaconda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/)
 1. Clone this repo
    ```
-   git clone https://github.com/pointW/asrse3_corl20.git
+   git clone https://github.com/ThanhDuonghcmut/asrse3-copy.git
    cd asrse3_corl20
    ```
-1. Create and activate conda environment, install requirement packages
+1. Install requirement packages
    ```
-   conda create --name asrse3 python=3.7
-   conda activate asrse3
    pip install -r requirements.txt
    cd ..
    ```
-   Note that this project was developed under pybullet version 2.7.1. Newer version of pybullet should also work, but it is not tested.
 1. Install [PyTorch](https://pytorch.org/) (Recommended: pytorch==1.7.0, torchvision==0.8.1)
 1. Install [CuPy](https://github.com/cupy/cupy)
-1. Clone and install the environment repo
+1. Install the helping hands environment:
    ```
-   git clone https://github.com/ColinKohler/helping_hands_rl_envs.git -b dian_corl20
    cd helping_hands_rl_envs
    pip install .
    cd ..
@@ -32,11 +27,11 @@ This is a copy of asrse3 github repo of Dian Wang. Original project website: htt
    cd asrse3_corl20/scripts
    ```
 
-## 3D (x y theta) Experiments
+## 3D (x y theta) Experiments --- Only use "house_building_x" environment
 
-### Only use "house_building_x" environment
+### Deconstruction Data Collection
 
-#### Deconstruction Data Collection
+Because the house_building_x_need to specify the goal, so for every goal we will collect into a folder.
 
 ```
 python fill_buffer_deconstruct.py --num_process=20 --alg=margin_asr --action_sequence=xyrp --buffer_size=50000 --env=house_building_1_deconstruct --num_objects=5 --max_episode_steps=10 --log_sub=h1_deconstruct
