@@ -33,7 +33,7 @@ This is a copy of asrse3 github repo of Dian Wang. Original project website: htt
 
 Because the house_building_x_need to specify the goal, so for every goal we will collect into a folder.
 
-#### Example training goal=1l1b1r with algorithm ASRSE3
+#### Example collect data for `--goal=1l1b1r` with algorithm ASRSE3
 
 ```
 python fill_buffer_deconstruct.py --num_process=20 --alg=margin_asr --action_sequence=xyrp --buffer_size=50000 --env=house_building_x_deconstruct --max_episode_steps=10 --log_sub=hx_deconstruct --goal=1l1b1r
@@ -61,11 +61,11 @@ python fill_buffer_deconstruct.py --num_process=20 --alg=margin_asr --action_seq
 
 Data of each goal will be stored in a seperate folder, sub folder of `log_sub` , the name of the folder is the goal.
 
-**The data of each goal must be collect one time. If you want to collect data of that goal again, you have to delete the data folder in the `log_sub` folder first.**
+**The data of each goal must be collect one time. If you want to collect data of that goal again, you have to delete the data folder in the `{log_sub}` folder first.**
 
 ### Training
 
-#### Example: training goal=1l1b1r using ASRSE3 SDQfD
+#### Example: training `--goal=1l1b1r` using ASRSE3 SDQfD
 
 ```
 python main.py --num_process=5 --alg=margin_asr --action_sequence=xyrp --explore=0 --fixed_eps --buffer=expert --max_episode=50000 --pre_train_step=10000 --env=house_building_x --max_episode_steps=10 --goal=1l1b1r
@@ -95,7 +95,7 @@ python main.py --num_process=5 --alg=margin_asr --action_sequence=xyrp --explore
 
 ## Results
 
-The training results will be saved under `scripts/outputs/{alg}/`
+The training results will be saved under `scripts/outputs/{alg}/training_house_building_x_{time training}/info/`. Learning curve and loss curve will be saved in that folder.
 
 ## Citation
 
